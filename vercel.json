@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "regions": ["iad1"],
+  "env": {
+    "DATABASE_URL": {
+      "@vercel/postgres": true
+    },
+    "SABILAB_LLM_API_KEY": "@sabilab-llm-api-key",
+    "SABILAB_LLM_MODEL": "@sabilab-llm-model",
+    "SABILAB_LLM_PROVIDER": "@sabilab-llm-provider",
+    "SABILAB_LLM_BASE_URL": "@sabilab-llm-base-url",
+    "SABILAB_LLM_READING_MODEL": "@sabilab-llm-reading-model",
+    "SABILAB_LLM_SCORING_MODEL": "@sabilab-llm-scoring-model"
+  },
+  "crons": []
+}
