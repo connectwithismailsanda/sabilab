@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -13,7 +13,7 @@
   --color-cream: #ffffff;
   --color-line: #e9e0f7;
   --color-muted: #756b86;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system,
+  --font-sans: "Syne", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: "Syne", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -38,6 +38,7 @@
   button,
   [role="button"] {
     cursor: pointer;
+    font-family: inherit;
   }
   h1,
   h2,
