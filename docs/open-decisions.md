@@ -55,6 +55,36 @@ No email by design. Options:
 - **One-time recovery code shown at sign-up** (recommended): display once, hash it in `users.recovery_code_hash`, allow password reset with code + username.
 - **Accept permanent lockout**: simpler, but hostile to real users. Not recommended for a pilot.
 
-## 4. Managed Postgres migration
+## 4. Managed Postgres migration — DONE
 
-Replace `lib/db/index.ts` PGlite client with `drizzle-orm/node-postgres` + `DATABASE_URL`. The schema in `db/schema.sql` is already Postgres-dialect and runs against both PGlite and managed Postgres. Queries do not change.
+`lib/db/index.ts` runs `drizzle-orm/node-postgres` against `DATABASE_URL` when the
+variable is set, and PGlite otherwise for local development. The schema in
+`db/schema.sql` is Postgres-dialect and runs against both; queries do not change.
+
+The Supabase free-tier project `yyooitzrmzgxnkhbhorl` (region `us-east-1`) is
+live with all 12 tables created, and the app's own smoke suite passes against it.
+
+### The connection string that matters
+
+```text
+postgresql://postgres.yyooitzrmzgxnkhbhorl:<password>@aws-0-us-east-1.pooler.supabase.com:6543/postgres?sslmode=no-verify
+```
+
+Two things bite here, and both cost a full debugging cycle:
+
+1. **Use the pooler, not the direct host.** `db.yyooitzrmzgxnkhbhorl.supabase.co`
+   resolves to an IPv6-only address. Netlify and Vercel functions have no IPv6
+   egress, so the direct host fails with `ENOTFOUND`. The pooler host
+   (`aws-0-<region>.pooler.supabase.com`) is IPv4 and reachable.
+2. **The username changes.** The pooler expects `postgres.<project-ref>`, not
+   `postgres`.
+
+`sslmode=no-verify` is required because the pooler's certificate does not chain
+to a public CA for the pooler hostname. `sslmode=require` maps to `verify-full`
+in `pg-connection-string` and fails with "self-signed certificate in chain".
+
+## 5. Password rotation
+
+The database password has been shared in chat while debugging. Rotate it in
+Supabase (Settings → Database), then update `DATABASE_URL` on Netlify and
+redeploy. The old password stops working immediately.

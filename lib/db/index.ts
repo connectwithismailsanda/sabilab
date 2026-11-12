@@ -58,7 +58,17 @@ async function initPostgres(): Promise<PostgresState> {
     throw new Error("DATABASE_URL is not set");
   }
 
-  const pool = new Pool({ connectionString: databaseUrl });
+  // Serverless hosts run many short-lived instances against one database, so the
+  // pool stays small and connections are recycled quickly. The Supabase pooler
+  // (transaction mode) is the intended production target: the direct host is
+  // IPv6-only and unreachable from Netlify and Vercel functions.
+  const pool = new Pool({
+    connectionString: databaseUrl,
+    max: 5,
+    idleTimeoutMillis: 10_000,
+    connectionTimeoutMillis: 10_000,
+  });
+
   const ddl = readFileSync(
     path.join(process.cwd(), "db", "schema.sql"),
     "utf8",
@@ -73,9 +83,19 @@ async function initPostgres(): Promise<PostgresState> {
   };
 }
 
+function isServerlessHost(): boolean {
+  return Boolean(process.env.VERCEL || process.env.NETLIFY);
+}
+
 async function init(): Promise<DbState> {
   if (process.env.DATABASE_URL) {
     return initPostgres();
+  }
+  if (isServerlessHost()) {
+    throw new Error(
+      "DATABASE_URL is not set. Managed Postgres is required on serverless hosts; " +
+        "PGlite cannot persist to the read-only function filesystem.",
+    );
   }
   return initPglite();
 }
