@@ -106,12 +106,7 @@ export default function LandingPage() {
                   Make decisions that matter.
                 </span>
               </h1>
-              <p className="text-[17px] leading-1.75 text-[#e4d8f5] max-w-[520px] mb-[30px]">
-                Explore realistic workplace challenges, collaborate with
-                teammates and discover what your decisions can achieve. Your
-                next experience starts here.
-              </p>
-              <div className="actions flex flex-wrap items-center gap-3">
+              <div className="actions flex flex-wrap items-center gap-3 mt-[30px]">
                 <button
                   className="primary rounded-[13px] bg-gradient-to-tr from-[#8b35eb] to-[#6d28d9] px-6 py-[14px] text-white font-black shadow-[0_9px_22px_#6d28d933] hover:-translate-y-[2px] hover:shadow-[0_14px_28px_#6d28d944] transition"
                   onClick={() => {
