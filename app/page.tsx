@@ -21,7 +21,6 @@ export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState<number | null>(null);
 
-  const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
   const handleChoice = (n: number) => {
@@ -60,7 +59,9 @@ export default function LandingPage() {
           <div className="navright flex items-center gap-3">
             <button
               className="nav-cta rounded-[14px] bg-gradient-to-tr from-[#8b35eb] to-[#6d28d9] px-5 py-3 text-white font-black shadow-[0_9px_22px_#6d28d933] hover:-translate-y-[2px] hover:shadow-[0_14px_28px_#6d28d944] transition"
-              onClick={openModal}
+              onClick={() => {
+                document.getElementById("scenarios")?.scrollIntoView();
+              }}
             >
               Enter SabiLab&nbsp; →
             </button>
@@ -442,7 +443,9 @@ export default function LandingPage() {
               </div>
               <button
                 className="primary bg-[#d8b4fe] text-[#2E1065] shadow-none whitespace-nowrap rounded-[13px] px-6 py-[14px] font-black"
-                onClick={openModal}
+                onClick={() => {
+                  document.getElementById("scenarios")?.scrollIntoView();
+                }}
               >
                 Enter SabiLab&nbsp; →
               </button>
