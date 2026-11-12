@@ -273,7 +273,7 @@ export default function LandingPage() {
                       </span>
                     </div>
                     <div className="scenario-body p-5">
-                      <h3 className="font-display font-bold text-[20px] Syne">{scenario.title}</h3>
+                      <h3 className="font-display font-bold text-[20px]">{scenario.title}</h3>
                       <p className="mt-[8px] text-[13px] leading-1.6 text-[#756b86] min-h-[63px] mb-[18px]">
                         {scenario.tagline}
                       </p>
@@ -302,7 +302,7 @@ export default function LandingPage() {
                     <span className="illustration text-[76px] drop-shadow-[0_12px_8px_#43205b22]">💻</span>
                   </div>
                   <div className="scenario-body p-5">
-                    <h3 className="font-display font-bold text-[20px] Syne">
+                    <h3 className="font-display font-bold text-[20px]">
                       {scenario.title}
                     </h3>
                     <p className="mt-[8px] text-[13px] leading-1.6 text-[#756b86] min-h-[63px] mb-[18px]">
@@ -364,7 +364,7 @@ export default function LandingPage() {
                     {step.num}
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-[16px] Syne mt-[1px] mb-[5px]">
+                    <h3 className="font-display font-bold text-[16px] mt-[1px] mb-[5px]">
                       {step.title}
                     </h3>
                     <p className="text-[13px] leading-1.55 text-[#756b86] m-0">
@@ -395,7 +395,7 @@ export default function LandingPage() {
             <div className="preview bg-[#2E1065] text-white rounded-[28px] p-[34px] relative overflow-hidden">
               <div className="absolute w-[230px] h-[230px] rounded-full bg-[#8b35eb55] blur-[40px] right-[-80px] top-[-80px]" />
               <div className="relative z-10">
-                <h3 className="font-display font-bold text-[23px] Syne m-0 mb-[8px]">
+                <h3 className="font-display font-bold text-[23px] m-0 mb-[8px]">
                   You&rsquo;re on the team.
                 </h3>
                 <p className="text-[13px] text-[#d9c8ed] leading-1.6 mb-[22px]">
@@ -489,7 +489,7 @@ export default function LandingPage() {
           >
             ✕
           </button>
-          <h2 id="modal-title" className="font-display font-extrabold text-[26px] Syne m-0 mb-[10px]">
+          <h2 id="modal-title" className="font-display font-extrabold text-[26px] m-0 mb-[10px]">
             Your workplace awaits.
           </h2>
           <p className="text-[#756b86] leading-1.6 text-[14px]">

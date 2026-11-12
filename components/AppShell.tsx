@@ -218,7 +218,7 @@ export function AppShell({
             className="w-full max-w-md rounded-[22px] bg-white p-6 shadow-[0_30px_90px_#10021e88]"
           >
             <div className="flex items-start justify-between gap-3">
-              <h2 id="help-title" className="font-display font-extrabold text-lg Syne">
+              <h2 id="help-title" className="font-display font-extrabold text-lg">
                 How the workspace works
               </h2>
               <button
